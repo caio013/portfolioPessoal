@@ -10,7 +10,6 @@ const modal = document.getElementById('projectModal')
 const modalClose = document.querySelector('.close-modal')
 const modalBody = document.querySelector('.modal-body')
 const contactForm = document.getElementById('contactForm')
-const scrollToTopBtn = document.getElementById('scrollToTop')
 const currentYearSpan = document.getElementById('currentYear')
 
 // Set current year in footer
@@ -81,109 +80,6 @@ tabBtns.forEach(btn => {
   })
 })
 
-// Project modal
-// const projectDetails = {
-//   project1: {
-//     title: 'Site',
-//     description:
-//       'Este projeto foi desenvolvido durante a Next Level Week da Rocketseat, com o objetivo de aprender e praticar os fundamentos de HTML, CSS e JavaScript, criando uma página moderna e responsiva para uma barbearia.',
-//     image: 'https://via.placeholder.com/600x400',
-//     tags: ['HTML', 'CSS', 'Javascript'],
-//     features: [
-//       'Página inicial com informações sobre a barbearia',
-//       'Formulário de contato',
-//       'Animações e efeitos com JavaScript'
-//     ],
-//     demoLink: 'https://caio013.github.io/nlw_siteBarbearia/',
-//     codeLink: 'https://github.com/caio013/nlw_siteBarbearia'
-//   },
-//   project2: {
-//     title: 'App de Gerenciamento de Tarefas',
-//     description:
-//       'Um aplicativo de gerenciamento de tarefas colaborativo com atualizações em tempo real e espaços de trabalho em equipe.',
-//     image: 'https://via.placeholder.com/600x400',
-//     tags: ['Next.js', 'Firebase', 'Tailwind CSS'],
-//     features: [
-//       'Colaboração em tempo real',
-//       'Criação e atribuição de tarefas',
-//       'Rastreamento de prazos e notificações',
-//       'Anexos de arquivos e comentários',
-//       'Espaços de trabalho em equipe e permissões',
-//       'Logs de atividades e relatórios'
-//     ],
-//     demoLink: '#',
-//     codeLink: '#'
-//   },
-//   project3: {
-//     title: 'Dashboard de Clima',
-//     description:
-//       'Um aplicativo de clima que fornece previsões em tempo real e visualização de dados históricos de clima.',
-//     image: 'https://via.placeholder.com/600x400',
-//     tags: ['React', 'Chart.js', 'Weather API'],
-//     features: [
-//       'Condições climáticas atuais',
-//       'Previsões horárias e de 7 dias',
-//       'Dados históricos de clima',
-//       'Visualizações de dados interativas',
-//       'Pesquisa de localização e favoritos',
-//       'Alertas de clima severo'
-//     ],
-//     demoLink: '#',
-//     codeLink: '#'
-//   },
-//   project4: {
-//     title: 'API de Rastreamento Fitness',
-//     description:
-//       'Uma API RESTful para rastrear treinos, nutrição e metas de fitness.',
-//     image: 'https://via.placeholder.com/600x400',
-//     tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-//     features: [
-//       'Autenticação e autorização de usuários',
-//       'Registro e rastreamento de treinos',
-//       'Nutrição e planejamento de refeições',
-//       'Definição de metas e rastreamento de progresso',
-//       'Análises e relatórios',
-//       'Integração com dispositivos de fitness via API'
-//     ],
-//     demoLink: '#',
-//     codeLink: '#'
-//   },
-//   project5: {
-//     title: 'Dashboard de Mídia Social',
-//     description:
-//       'Um dashboard para gerenciar e analisar contas de mídia social em várias plataformas.',
-//     image: 'https://via.placeholder.com/600x400',
-//     tags: ['React', 'Redux', 'Social Media APIs'],
-//     features: [
-//       'Gerenciamento multi-plataforma',
-//       'Agendamento e publicação de posts',
-//       'Análise de engajamento',
-//       'Insights de audiência e demografia',
-//       'Análise de concorrentes',
-//       'Relatórios de desempenho de conteúdo'
-//     ],
-//     demoLink: '#',
-//     codeLink: '#'
-//   },
-//   project6: {
-//     title: 'API de Listagem Imobiliária',
-//     description:
-//       'Uma API abrangente para listagens imobiliárias, pesquisas e gerenciamento de propriedades.',
-//     image: 'https://via.placeholder.com/600x400',
-//     tags: ['Node.js', 'Express', 'PostgreSQL', 'GIS'],
-//     features: [
-//       'Listagem e gerenciamento de propriedades',
-//       'Busca avançada com filtros',
-//       'Geolocalização e mapeamento',
-//       'Favoritos e alertas de usuários',
-//       'Perfis de agentes e agências',
-//       'Análises e relatórios'
-//     ],
-//     demoLink: '#',
-//     codeLink: '#'
-//   }
-// }
-
 // Open modal with project details
 projectDetailBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -243,73 +139,6 @@ window.addEventListener('click', e => {
     modal.classList.remove('active')
     document.body.style.overflow = 'auto' // Enable scrolling
   }
-})
-
-// Form validation
-contactForm.addEventListener('submit', e => {
-  e.preventDefault()
-
-  // Get form values
-  const name = document.getElementById('name').value.trim()
-  const email = document.getElementById('email').value.trim()
-  const subject = document.getElementById('subject').value.trim()
-  const message = document.getElementById('message').value.trim()
-
-  // Reset error messages
-  document.getElementById('nameError').textContent = ''
-  document.getElementById('emailError').textContent = ''
-  document.getElementById('subjectError').textContent = ''
-  document.getElementById('messageError').textContent = ''
-
-  // Validate
-  let isValid = true
-
-  if (name === '') {
-    document.getElementById('nameError').textContent = 'Nome é obrigatório'
-    isValid = false
-  }
-
-  if (email === '') {
-    document.getElementById('emailError').textContent = 'Email é obrigatório'
-    isValid = false
-  } else if (!isValidEmail(email)) {
-    document.getElementById('emailError').textContent = 'Email inválido'
-    isValid = false
-  }
-
-  if (subject === '') {
-    document.getElementById('subjectError').textContent =
-      'Assunto é obrigatório'
-    isValid = false
-  }
-
-  if (message === '') {
-    document.getElementById('messageError').textContent =
-      'Mensagem é obrigatória'
-    isValid = false
-  }
-
-  // If valid, submit form (simulate for now)
-  if (isValid) {
-    // Normally you would send this to a server
-    alert('Mensagem enviada com sucesso! Obrigado pelo contato.')
-    contactForm.reset()
-  }
-})
-
-// Email validation helper
-function isValidEmail(email) {
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  return re.test(email.toLowerCase())
-}
-
-// Scroll to top
-scrollToTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
 })
 
 // Add animation on scroll
